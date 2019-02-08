@@ -28,4 +28,5 @@ Param(
         }
     }
     }
+    Logout-AzAccount | out-null;
 }
