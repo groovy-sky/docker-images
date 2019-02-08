@@ -6,7 +6,7 @@ Param(
     Login-AzAccount;
     Get-AzSubscription | %{
         Select-AzSubscription -SubscriptionId $_.Id | out-null;
-        get-azvm -Status | ?{($_.OSProfile.WindowsConfiguration -or $_.LicenseType -eq "Windows_Server") -and $_.PowerState -eq "VM running"} | %{
+        get-azvm -Status | ?{$_.PowerState -eq "VM running"} | %{
             $public_ip=$null;
             $public_ip_scan=$null;
             $nic_rg = $_.NetworkProfile.NetworkInterfaces.Id.split("/")[4] ;
